@@ -76,6 +76,7 @@ const SignupForm = () => {
           lastName: '',
           email: '',
           intro: '',
+          age: '',
           acceptedTerms: false, // added for our checkbox
           jobType: '' // added for our select
         }}
@@ -89,6 +90,12 @@ const SignupForm = () => {
           intro: Yup.string()
             .min(10, 'Must be 10 characters or more')
             .required('Required'),
+          
+          age: Yup.number()
+            .min(18, 'Must be 18 years or older')
+            .max(130, 'Must be 130 years or younger')
+            .required('Required'),
+
           email: Yup.string()
             .email('Invalid email address')
             .required('Required'),
@@ -131,6 +138,13 @@ const SignupForm = () => {
             rows="3"
             type="text"
             placeholder="write..."
+          />
+
+          <MyTextInput
+            label="Your Age"
+            name="age"
+            type="number"
+            placeholder="10"
           />
 
           <MyTextInput
